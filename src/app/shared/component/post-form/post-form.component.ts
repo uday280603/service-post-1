@@ -31,7 +31,8 @@ export class PostFormComponent implements OnInit {
       this._postService.createNewPost(NEW_OBJ)
       .subscribe({
         next : data =>{
-          this._snackBar.openSnackBar(data.msg)
+          this._snackBar.openSnackBar(data.msg);
+          this.postForm.reset();
         },
         error : err =>{
           this._snackBar.openSnackBar(err)
