@@ -1,0 +1,35 @@
+
+<div class="row" *ngIf="getAllPosts.length > 0 ; else noData">
+  <div
+    class="col-md-4 mb-3"
+    *ngFor="let post of getAllPosts  ; trackBy trackByFun"
+  >
+    <div class="card h-100 shadow-sm">
+
+      <div class="card-header">
+        <strong>{{ post.title }}</strong>
+      </div>
+
+      <div class="card-body">
+        {{ post.description }}
+      </div>
+
+      <div
+        class="card-footer d-flex justify-content-between"
+      >
+        <button class="btn btn-sm btn-primary" (click)="onEdit(post)"> 
+          Edit
+        </button>
+
+        <button class="btn btn-sm btn-danger" (click)="onRemove(post.postId)">
+          Remove
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #noData>
+  <p class="alert alert-info">No Post yet..! </p>
+</ng-template>
